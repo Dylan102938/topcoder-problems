@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "topcoder-problems"
+version = "0.1.0"
+description = ""
+authors = ["Dylan Feng <dylan@sonnetai.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+beautifulsoup4 = "^4.12.3"
+requests = "^2.32.3"
+jinja2 = "^3.1.4"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.2"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-exec-plugin.commands]
+reformat = "isort . && ruff check --fix"
+lint = "isort . --check-only && ruff check"
