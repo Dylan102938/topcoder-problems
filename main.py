@@ -1,8 +1,19 @@
 from topcoder_problems.generator import create_problem_files
 from topcoder_problems.scraper import TopCoderScraper
 
-scraper = TopCoderScraper()
-problems = scraper.run()
+scraper = TopCoderScraper({
+    "divisions": [{
+        "division_id": 1,
+        "levels": [2]
+    }],
+    "limit": 10,
+    "page": 1
+})
 
-for i in range(20):
-    create_problem_files(problems[i])
+# problems = scraper.run()
+
+# for problem in problems:
+#     create_problem_files(problem)
+
+problem = scraper._get_problem("https://archive.topcoder.com/ProblemStatement/pm/1614", with_cache=True, cache_dir="./problems")
+create_problem_files(problem)
